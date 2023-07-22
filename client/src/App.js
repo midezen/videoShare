@@ -1,23 +1,32 @@
 import styled from "styled-components";
 import Menu from "./components/Menu";
 import Navbar from "./components/Navbar";
-import Outlet from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+`;
 
-const Main = styled.div``;
+const Main = styled.div`
+  flex: 6;
+`;
+
+const Wrapper = styled.div``;
 
 const App = () => {
   const Layout = () => {
     return (
       <>
-        <Menu />
-        <Main>
-          <Navbar />
-          <Outlet />
-        </Main>
+        <Navbar />
+        <Container>
+          <Menu />
+          <Main>
+            <Wrapper>
+              <Outlet />
+            </Wrapper>
+          </Main>
+        </Container>
       </>
     );
   };
@@ -35,11 +44,7 @@ const App = () => {
     },
   ]);
 
-  return (
-    <Container>
-      <RouterProvider router={router} />
-    </Container>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
