@@ -18,9 +18,9 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 
 const Container = styled.div`
   flex: 1;
-  background-color: #202020;
+  background-color: ${({ theme }) => theme.bg};
   height: calc(100vh - 50px);
-  color: white;
+  color: ${({ theme }) => theme.text};
   font-size: 14px;
   position: sticky;
   top: 50px;
@@ -29,10 +29,10 @@ const Container = styled.div`
     width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background: #111;
+    background: ${({ theme }) => theme.track};
   }
   &::-webkit-scrollbar-thumb {
-    background: #333;
+    background: ${({ theme }) => theme.thumb};
   }
 `;
 
@@ -50,7 +50,7 @@ const Item = styled.div`
 
 const Hr = styled.hr`
   margin: 15px 0px;
-  border: 0.5px solid #373737;
+  border: 0.5px solid ${({ theme }) => theme.soft};
 `;
 
 const Login = styled.div``;
@@ -69,11 +69,21 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const Menu = () => {
+const Title = styled.h2`
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaaaaa;
+  margin-bottom: 20px;
+`;
+
+const Menu = ({ darkMode, setDarkMode }) => {
+  const handleTheme = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
     <Container>
       <Wrapper>
-        {/* <ItemContainer> */}
         <Item>
           <HomeIcon />
           Home
@@ -104,6 +114,7 @@ const Menu = () => {
           </Button>
         </Login>
         <Hr />
+        <Title>BEST OF MIDETUBE</Title>
         <Item>
           <LibraryMusicOutlinedIcon />
           Music
@@ -141,11 +152,10 @@ const Menu = () => {
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
-        <Item>
+        <Item onClick={handleTheme}>
           <SettingsBrightnessOutlinedIcon />
           Light Mode
         </Item>
-        {/* </ItemContainer> */}
       </Wrapper>
     </Container>
   );
