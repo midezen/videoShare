@@ -12,11 +12,13 @@ const Container = styled.div`
 `;
 
 const Main = styled.div`
-  flex: 6;
+  flex: 5;
   background-color: ${({ theme }) => theme.bg};
 `;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  padding: 22px 22px;
+`;
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(
@@ -31,9 +33,9 @@ const App = () => {
     return (
       <>
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-          <Navbar />
+          <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
           <Container>
-            <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
+            <Menu />
             <Main>
               <Wrapper>
                 <Outlet />

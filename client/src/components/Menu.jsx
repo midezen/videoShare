@@ -13,9 +13,7 @@ import LiveOutlinedIcon from "@mui/icons-material/LiveTvOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { useEffect } from "react";
 
 const Container = styled.div`
   flex: 1;
@@ -46,7 +44,12 @@ const Item = styled.div`
   align-items: center;
   gap: 20px;
   cursor: pointer;
-  padding: 7.5px 0px;
+  padding: 7.5px 2px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.bg};
+  }
 `;
 
 const Hr = styled.hr`
@@ -77,12 +80,7 @@ const Title = styled.h2`
   margin-bottom: 20px;
 `;
 
-const Menu = ({ darkMode, setDarkMode }) => {
-  const handleTheme = (e) => {
-    setDarkMode(!darkMode);
-    e.preventDefault();
-  };
-
+const Menu = () => {
   return (
     <Container>
       <Wrapper>
@@ -153,10 +151,6 @@ const Menu = ({ darkMode, setDarkMode }) => {
         <Item>
           <HelpOutlineOutlinedIcon />
           Help
-        </Item>
-        <Item onClick={handleTheme}>
-          <SettingsBrightnessOutlinedIcon />
-          Light Mode
         </Item>
       </Wrapper>
     </Container>
