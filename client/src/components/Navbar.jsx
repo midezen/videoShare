@@ -9,7 +9,6 @@ const Container = styled.div`
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
-  border-bottom: 2px solid black;
 `;
 
 const Wrapper = styled.div`

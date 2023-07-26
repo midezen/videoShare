@@ -15,6 +15,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import { useEffect } from "react";
 
 const Container = styled.div`
   flex: 1;
@@ -77,8 +78,9 @@ const Title = styled.h2`
 `;
 
 const Menu = ({ darkMode, setDarkMode }) => {
-  const handleTheme = () => {
+  const handleTheme = (e) => {
     setDarkMode(!darkMode);
+    e.preventDefault();
   };
 
   return (

@@ -4,7 +4,8 @@ import Navbar from "./components/Navbar";
 import { Outlet, createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import { darkTheme, lightTheme } from "./utils/Theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Video from "./pages/Video";
 
 const Container = styled.div`
   display: flex;
@@ -18,7 +19,13 @@ const Main = styled.div`
 const Wrapper = styled.div``;
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    JSON.parse(localStorage.getItem("darkmode")) || false
+  );
+
+  useEffect(() => {
+    localStorage.setItem("darkmode", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   const Layout = () => {
     return (
@@ -46,6 +53,10 @@ const App = () => {
         {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "video/:id",
+          element: <Video />,
         },
       ],
     },
