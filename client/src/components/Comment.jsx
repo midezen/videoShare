@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Ayomide from "../img/Ayomide 2.png";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
+import { useState } from "react";
+import AddComment from "./AddComment";
 
 const Container = styled.div`
   display: flex;
@@ -35,6 +37,7 @@ const DatePosted = styled.span`
 
 const Text = styled.p`
   font-size: 15px;
+  font-weight: 300;
 `;
 
 const Bottom = styled.div`
@@ -53,12 +56,19 @@ const Buttons = styled.div`
 const Button = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  border-radius: 30px;
+  background-color: ${(props) =>
+    props.reply ? ({ theme }) => theme.bgLighter : "none"};
+  color: ${({ theme }) => theme.text};
+  padding: ${(props) => (props.reply ? "10px 13px" : "none")};
   border: none;
   cursor: pointer;
+  gap: 5px;
 `;
 
 const Comment = () => {
+  const [showAddReply, setShowAddReply] = useState(false);
+
   return (
     <Container>
       <Image src={Ayomide} />
@@ -81,8 +91,11 @@ const Comment = () => {
               <ThumbDownAltIcon />
             </Button>
           </Buttons>
-          Reply
+          <Button reply onClick={() => setShowAddReply(!showAddReply)}>
+            Reply
+          </Button>
         </Bottom>
+        {showAddReply && <AddComment reply />}
       </Details>
     </Container>
   );

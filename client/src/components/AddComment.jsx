@@ -67,21 +67,25 @@ const InputButton = styled.button`
   cursor: pointer;
 `;
 
-const AddComment = () => {
+const AddComment = ({ reply }) => {
   const [isComment, setIsComment] = useState(true);
   return (
     <Container>
       <ProfileImage src={Ayomide} />
       <InputSection>
-        <Input placeholder="Add a comment" />
+        <Input placeholder={reply ? "Add a reply" : "Add a Comment"} />
         <InputBottom>
           <EmojiIcon style={{ cursor: "pointer" }} />
           <InputButtons>
             <InputButton>Cancel</InputButton>
             {isComment ? (
-              <InputButton thereIsComment>Comment</InputButton>
+              <InputButton thereIsComment>
+                {reply ? "Reply" : "Comment"}
+              </InputButton>
             ) : (
-              <InputButton isdisabled>Comment</InputButton>
+              <InputButton isdisabled>
+                {reply ? "Reply" : "Comment"}
+              </InputButton>
             )}
           </InputButtons>
         </InputBottom>

@@ -5,6 +5,7 @@ import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import SortIcon from "@mui/icons-material/Sort";
 import AddComment from "../components/AddComment";
 import Comments from "../components/Comments";
+import Card from "../components/Card";
 
 const Container = styled.div`
   display: flex;
@@ -127,6 +128,7 @@ const CommentSort = styled.div`
 
 const Recommendation = styled.div`
   flex: 2.5;
+  color: ${({ theme }) => theme.text};
 `;
 
 const Video = () => {
@@ -150,7 +152,7 @@ const Video = () => {
             <ChannelInfo>
               <ChannelImage src="https://media.istockphoto.com/id/1398997991/photo/young-businesswoman-using-a-digital-tablet-focused-designer-standing-in-her-agency-creative.webp?b=1&s=170667a&w=0&k=20&c=2dqRV4jIr2Aumy6KvN1U3xkQOefjIY8erwIxDkDPWVc=" />
               <ChannelInfoTexts>
-                <ChannelName>Midezen</ChannelName>
+                <ChannelName>MideZen</ChannelName>
                 <Subscribers>500k Subscribers</Subscribers>
               </ChannelInfoTexts>
             </ChannelInfo>
@@ -192,7 +194,23 @@ const Video = () => {
         <AddComment />
         <Comments />
       </Content>
-      <Recommendation>Recommendation</Recommendation>
+      <Recommendation>
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+        <Card type="sm" />
+      </Recommendation>
     </Container>
   );
 };
