@@ -11,6 +11,7 @@ const Container = styled.div`
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
+  z-index: 999;
 `;
 
 const Wrapper = styled.div`
@@ -94,10 +95,12 @@ const Navbar = ({ darkMode, setDarkMode }) => {
           <SettingsBrightnessOutlinedIcon />
         </Item>
 
-        <Button>
-          <AccountCircleOutlinedIcon />
-          SIGN IN
-        </Button>
+        <Link to="auth" style={{ textDecoration: "none" }}>
+          <Button>
+            <AccountCircleOutlinedIcon />
+            SIGN IN
+          </Button>
+        </Link>
       </Wrapper>
     </Container>
   );

@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import { darkTheme, lightTheme } from "./utils/Theme";
 import { useEffect, useState } from "react";
 import Video from "./pages/Video";
+import SignIn from "./pages/SignIn";
 
 const Container = styled.div`
   display: flex;
@@ -59,6 +60,10 @@ const App = () => {
         {
           path: "video/:id",
           element: <Video />,
+        },
+        {
+          path: "auth",
+          element: <SignIn />,
         },
       ],
     },

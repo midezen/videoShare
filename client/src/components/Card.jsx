@@ -15,6 +15,7 @@ const Image = styled.img`
   object-fit: cover;
   border-radius: 10px;
   flex: ${(props) => props.type === "sm" && "0.5"};
+  position: relative;
 `;
 
 const Details = styled.div`
