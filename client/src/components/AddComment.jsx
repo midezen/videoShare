@@ -6,7 +6,6 @@ import { useState } from "react";
 const Container = styled.div`
   display: flex;
   gap: 15px;
-  align-items: center;
 `;
 
 const ProfileImage = styled.img`
@@ -74,7 +73,7 @@ const AddComment = () => {
     <Container>
       <ProfileImage src={Ayomide} />
       <InputSection>
-        <Input />
+        <Input placeholder="Add a comment" />
         <InputBottom>
           <EmojiIcon style={{ cursor: "pointer" }} />
           <InputButtons>

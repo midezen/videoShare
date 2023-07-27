@@ -4,6 +4,7 @@ import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import ThumbDownAltIcon from "@mui/icons-material/ThumbDownAlt";
 import SortIcon from "@mui/icons-material/Sort";
 import AddComment from "../components/AddComment";
+import Comments from "../components/Comments";
 
 const Container = styled.div`
   display: flex;
@@ -189,6 +190,7 @@ const Video = () => {
           </CommentSort>
         </ArrangeComments>
         <AddComment />
+        <Comments />
       </Content>
       <Recommendation>Recommendation</Recommendation>
     </Container>
