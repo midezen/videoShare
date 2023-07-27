@@ -39,9 +39,9 @@ const Search = styled.div`
   align-items: center;
   width: 40%;
   justify-content: space-between;
-  padding: 5px;
+  padding: 5px 20px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 20px;
 `;
 
 const Input = styled.input`
@@ -87,7 +87,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         </Link>
         <Search>
           <Input type="text" placeholder="Search" />
-          <SearchOutlinedIcon />
+          <SearchOutlinedIcon style={{ cursor: "pointer" }} />
         </Search>
 
         <Item onClick={handleTheme}>
