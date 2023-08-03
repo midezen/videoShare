@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { devices } from "../utils/devices";
 
 const Container = styled.div`
-  width: 350px;
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
@@ -11,11 +11,14 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: ${(props) => (props.type === "sm" ? "100px" : "202px")};
+  height: ${(props) => (props.type === "sm" ? "100px" : "210px")};
   object-fit: cover;
   border-radius: 10px;
   flex: ${(props) => props.type === "sm" && "0.5"};
   position: relative;
+  @media screen and (max-width: 970px) {
+    flex: 0;
+  }
 `;
 
 const Details = styled.div`
@@ -23,6 +26,9 @@ const Details = styled.div`
   margin-top: ${(props) => (props.type === "sm" ? "0px" : "16px")};
   gap: 12px;
   flex: ${(props) => props.type === "sm" && "0.5"};
+  @media screen and (max-width: 970px) {
+    flex: 1;
+  }
 `;
 
 const ChannelImage = styled.img`
@@ -43,16 +49,22 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.text};
   margin-bottom: ${(props) => (props.type === "sm" ? "15px" : "none")};
   width: ${(props) => (props.type === "sm" ? "100%" : "80%")};
+  @media screen and (max-width: 1306px) {
+    font-size: ${(props) => (props.type === "sm" ? "13px" : "16px")};
+  }
 `;
 
 const ChannelName = styled.h2`
   font-size: ${(props) => (props.type === "sm" ? "13px" : "14px")};
   color: ${({ theme }) => theme.textSoft};
   margin-top: ${(props) => (props.type === "sm" ? "0px" : "8px")};
+  @media screen and (max-width: 1306px) {
+    font-size: ${(props) => (props.type === "sm" ? "11px" : "14px")};
+  }
 `;
 
 const Info = styled.div`
-  font-size: ${(props) => (props.type === "sm" ? "13px" : "14px")};
+  font-size: ${(props) => (props.type === "sm" ? "11px" : "14px")};
   color: ${({ theme }) => theme.textSoft};
 `;
 

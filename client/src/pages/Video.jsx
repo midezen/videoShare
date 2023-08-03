@@ -6,14 +6,41 @@ import SortIcon from "@mui/icons-material/Sort";
 import AddComment from "../components/AddComment";
 import Comments from "../components/Comments";
 import Card from "../components/Card";
+import { devices } from "../utils/devices";
 
 const Container = styled.div`
   display: flex;
   gap: 24px;
 `;
 
+const Wrapper = styled.div`
+  width: 100%;
+  padding: 0px 500px;
+  display: flex;
+  gap: 24px;
+  @media screen and (max-width: 2420px) {
+    padding: 0px 300px;
+  }
+  @media screen and (max-width: 1800px) {
+    padding: 0px 150px;
+  }
+  @media ${devices.laptopL} {
+    padding: 0px 80px;
+  }
+  @media ${devices.laptop} {
+    margin: 0 -140px;
+  }
+  @media screen and (max-width: 1800px) {
+    padding: 0px 150px;
+  }
+  @media screen and (max-width: 970px) {
+    flex-direction: column;
+  }
+`;
+
 const Content = styled.div`
-  flex: 5;
+  flex: 2;
+  width: 100%;
 `;
 
 const VideoWrapper = styled.div``;
@@ -94,6 +121,9 @@ const ChannelDetailsBottom = styled.div`
   font-size: 15px;
   padding: 10px;
   border-radius: 10px;
+  @media screen and (max-width: 1306px) {
+    font-size: 13px;
+  }
 `;
 
 const Info = styled.span`
@@ -124,93 +154,102 @@ const CommentSort = styled.div`
   align-items: center;
   gap: 5px;
   font-size: 15px;
+  @media screen and (max-width: 1306px) {
+    font-size: 13px;
+  }
 `;
 
 const Recommendation = styled.div`
-  flex: 2.5;
+  flex: 1;
   color: ${({ theme }) => theme.text};
+  width: 100%;
 `;
 
 const Video = () => {
+  const screenWidth = window.innerWidth;
+
   return (
     <Container>
-      <Content>
-        <VideoWrapper>
-          <iframe
-            width="100%"
-            height="450"
-            src="https://www.youtube.com/embed/vGxR98gI930"
-            title="Youtube Video Player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </VideoWrapper>
-        <Title>This is a video Title</Title>
-        <ChannelDetailsTop>
-          <Channel>
-            <ChannelInfo>
-              <ChannelImage src="https://media.istockphoto.com/id/1398997991/photo/young-businesswoman-using-a-digital-tablet-focused-designer-standing-in-her-agency-creative.webp?b=1&s=170667a&w=0&k=20&c=2dqRV4jIr2Aumy6KvN1U3xkQOefjIY8erwIxDkDPWVc=" />
-              <ChannelInfoTexts>
-                <ChannelName>MideZen</ChannelName>
-                <Subscribers>500k Subscribers</Subscribers>
-              </ChannelInfoTexts>
-            </ChannelInfo>
-            <Button>
-              <NotificationsIcon />
-              Subscribe
-            </Button>
-          </Channel>
+      <Wrapper>
+        <Content>
+          <VideoWrapper>
+            <iframe
+              width="100%"
+              height="450"
+              src="https://www.youtube.com/embed/vGxR98gI930"
+              title="Youtube Video Player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </VideoWrapper>
+          <Title>This is a video Title</Title>
+          <ChannelDetailsTop>
+            <Channel>
+              <ChannelInfo>
+                <ChannelImage src="https://media.istockphoto.com/id/1398997991/photo/young-businesswoman-using-a-digital-tablet-focused-designer-standing-in-her-agency-creative.webp?b=1&s=170667a&w=0&k=20&c=2dqRV4jIr2Aumy6KvN1U3xkQOefjIY8erwIxDkDPWVc=" />
+                <ChannelInfoTexts>
+                  <ChannelName>MideZen</ChannelName>
+                  <Subscribers>500k Subscribers</Subscribers>
+                </ChannelInfoTexts>
+              </ChannelInfo>
+              <Button>
+                <NotificationsIcon />
+                Subscribe
+              </Button>
+            </Channel>
 
-          <Buttons>
-            <Button>
-              <ThumbUpAltIcon />
-              3.8k
-            </Button>
-            <Button>
-              <ThumbDownAltIcon />
-            </Button>
-          </Buttons>
-        </ChannelDetailsTop>
-        <ChannelDetailsBottom>
-          <Info>702, 503 views · June 22, 2023</Info>
-          <Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </Desc>
-          <Show>Show Less</Show>
-        </ChannelDetailsBottom>
-        <ArrangeComments>
-          <CommentCount> 244 Comments</CommentCount>
-          <CommentSort>
-            <SortIcon /> Sort by
-          </CommentSort>
-        </ArrangeComments>
-        <AddComment />
-        <Comments />
-      </Content>
-      <Recommendation>
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-        <Card type="sm" />
-      </Recommendation>
+            <Buttons>
+              <Button>
+                <ThumbUpAltIcon />
+                3.8k
+              </Button>
+              <Button>
+                <ThumbDownAltIcon />
+              </Button>
+            </Buttons>
+          </ChannelDetailsTop>
+          <ChannelDetailsBottom>
+            <Info>702, 503 views · June 22, 2023</Info>
+            <Desc>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </Desc>
+            <Show>Show Less</Show>
+          </ChannelDetailsBottom>
+
+          <ArrangeComments>
+            <CommentCount> 244 Comments</CommentCount>
+            <CommentSort>
+              <SortIcon /> Sort by
+            </CommentSort>
+          </ArrangeComments>
+          <AddComment />
+          <Comments />
+        </Content>
+        <Recommendation>
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+          <Card type="sm" />
+        </Recommendation>
+      </Wrapper>
     </Container>
   );
 };

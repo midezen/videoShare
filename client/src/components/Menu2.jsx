@@ -15,7 +15,12 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
+import logo from "../img/logo.png";
+import { IconButton } from "@mui/material";
 import { devices } from "../utils/devices";
+import { useContext } from "react";
+import { ToggleContext } from "../utils/toggleContext";
 
 const Container = styled.div`
   flex: 1;
@@ -25,7 +30,7 @@ const Container = styled.div`
   font-size: 14px;
   position: sticky;
   top: 50px;
-  overflow-y: ${(props) => (props.toggle ? "hidden" : "scroll")};
+  overflow-y: scroll;
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -35,72 +40,54 @@ const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     background: ${({ theme }) => theme.thumb};
   }
-  @media ${devices.laptop} {
-    overflow-y: hidden;
-  }
-  @media ${devices.mobileL} {
-    display: none;
-  }
 `;
 
 const Wrapper = styled.div`
-  width: ${(props) => props.toggle && "100%"};
   padding: 18px 26px;
 `;
 
-const Item = styled.div`
-  width: 100%;
+const DIV = styled.div`
+  display: flex;
   align-items: center;
-  gap: ${(props) => (props.toggle ? "10px" : "20px")};
-  font-size: ${(props) => props.toggle && "10px"};
+  gap: 15px;
+  margin-left: -5px;
+  margin-top: -8px;
+  margin-bottom: 8px;
+`;
+
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text};
+`;
+const Img = styled.img`
+  height: 25px;
+`;
+
+const Item = styled.div`
+  align-items: center;
+  gap: 20px;
   cursor: pointer;
   padding: 7.5px 2px;
   border-radius: 5px;
-  display: ${(props) =>
-    props.toggle === true && props.dontShow ? "none" : "flex"};
-  flex-direction: ${(props) => props.toggle && "column"};
 
   &:hover {
     background-color: ${({ theme }) => theme.bg};
   }
-  @media ${devices.laptop} {
-    display: ${(props) => props.dontShow && "none"};
-    flex-direction: column;
-    gap: 10px;
-    font-size: 10px;
-  }
-`;
-
-const ItemText = styled.div`
-  @media ${devices.tablet} {
-    display: none;
-  }
+  display: flex;
 `;
 
 const Hr = styled.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({ theme }) => theme.soft};
-  display: ${(props) => props.toggle && "none"};
-  @media ${devices.laptop} {
-    display: ${(props) => props.dontShow && "none"};
-  }
 `;
 
-const Login = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: ${(props) => props.toggle && "center"};
-  @media ${devices.laptop} {
-    align-items: center;
-  }
-`;
+const Login = styled.div``;
 
 const LoginText = styled.div`
-  display: ${(props) =>
-    props.toggle === true && props.dontShow ? "none" : "flex"};
-  @media ${devices.laptop} {
-    display: none;
-  }
+  display: block;
 `;
 
 const Button = styled.button`
@@ -115,111 +102,104 @@ const Button = styled.button`
   font-weight: 500px;
   margin-top: 10px;
   cursor: pointer;
-  @media ${devices.tablet} {
-    padding: 2px 10px;
-  }
 `;
 
-const ButtonText = styled.div`
-  display: ${(props) =>
-    props.toggle === true && props.dontShow ? "none" : "flex"};
-  @media ${devices.laptop} {
-    display: none;
-  }
-`;
+const ButtonText = styled.div``;
 
 const Title = styled.h2`
   font-size: 14px;
   font-weight: 500;
   color: #aaaaaa;
   margin-bottom: 20px;
-  display: ${(props) =>
-    props.toggle === true && props.dontShow ? "none" : "flex"};
-  @media ${devices.laptop} {
-    display: none;
-  }
 `;
 
-const Menu = ({ toggle }) => {
+const Menu2 = () => {
+  const { handleDrawerToggle, setDrawerToggle } = useContext(ToggleContext);
   return (
-    <Container toggle={toggle}>
+    <Container>
       <Wrapper>
+        <DIV>
+          <IconButton style={{ color: "inherit" }} onClick={handleDrawerToggle}>
+            <MenuIcon />
+          </IconButton>
+
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Logo>
+              <Img src={logo} />
+              MideTube
+            </Logo>
+          </Link>
+        </DIV>
         <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <Item toggle={toggle}>
+          <Item onClick={() => setDrawerToggle(false)}>
             <HomeIcon />
-            <ItemText>Home</ItemText>
+            Home
           </Item>
         </Link>
 
-        <Item toggle={toggle}>
+        <Item>
           <ExploreOutlinedIcon />
-          <ItemText>Explore</ItemText>
+          Explore
         </Item>
-        <Item toggle={toggle}>
+        <Item>
           <SubscriptionOutlinedIcon />
-          <ItemText>Subscriptions</ItemText>
+          Subscriptions
         </Item>
-        <Hr dontShow toggle={toggle} />
-        <Item dontShow toggle={toggle}>
+        <Hr />
+        <Item>
           <VideoLibraryOutlinedIcon />
           Library
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <HistoryOutlinedIcon />
           History
         </Item>
-        <Hr dontShow toggle={toggle} />
-        <Login toggle={toggle}>
-          <LoginText dontShow toggle={toggle}>
-            Sign in to like Videos, Comment and Subscribe.
-          </LoginText>
+        <Hr />
+        <Login>
+          <LoginText>Sign in to like Videos, Comment and Subscribe.</LoginText>
           <Link to="auth" style={{ textDecoration: "none" }}>
-            <Button toggle={toggle}>
+            <Button>
               <AccountCircleOutlinedIcon />
-              <ButtonText dontShow toggle={toggle}>
-                SIGN IN
-              </ButtonText>
+              <ButtonText>SIGN IN</ButtonText>
             </Button>
           </Link>
         </Login>
-        <Hr dontShow toggle={toggle} />
-        <Title dontShow toggle={toggle}>
-          BEST OF MIDETUBE
-        </Title>
-        <Item dontShow toggle={toggle}>
+        <Hr />
+        <Title>BEST OF MIDETUBE</Title>
+        <Item>
           <LibraryMusicOutlinedIcon />
           Music
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <SportsBasketBallOutlinedIcon />
           Sports
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <SportsESportsOutlinedIcon />
           Gaming
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <MovieOutlinedIcon />
           Movies
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <ArticleOutlinedIcon />
           News
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <LiveOutlinedIcon />
           Live
         </Item>
-        <Hr dontShow toggle={toggle} />
-        <Item dontShow toggle={toggle}>
+        <Hr />
+        <Item>
           <SettingsOutlinedIcon />
           Settings
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <FlagOutlinedIcon />
           Report
         </Item>
-        <Item dontShow toggle={toggle}>
+        <Item>
           <HelpOutlineOutlinedIcon />
           Help
         </Item>
@@ -228,4 +208,4 @@ const Menu = ({ toggle }) => {
   );
 };
 
-export default Menu;
+export default Menu2;

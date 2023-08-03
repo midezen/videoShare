@@ -38,6 +38,9 @@ const DatePosted = styled.span`
 const Text = styled.p`
   font-size: 15px;
   font-weight: 300;
+  @media screen and (max-width: 1306px) {
+    font-size: 13px;
+  }
 `;
 
 const Bottom = styled.div`
@@ -45,6 +48,9 @@ const Bottom = styled.div`
   align-items: center;
   gap: 40px;
   font-size: 13px;
+  @media screen and (max-width: 1306px) {
+    font-size: 11px;
+  }
 `;
 
 const Buttons = styled.div`
