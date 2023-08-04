@@ -18,24 +18,21 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
-  // padding: 0px 500px;
   display: flex;
   gap: 24px;
-  // @media screen and (max-width: 2420px) {
-  //   padding: 0px 300px;
-  // }
-  // @media screen and (max-width: 1800px) {
-  //   padding: 0px 150px;
-  // }
-  // @media ${devices.laptopL} {
-  //   padding: 0px 80px;
-  // }
-  // @media ${devices.laptop} {
-  //   margin: 0 -140px;
-  // }
-  // @media screen and (max-width: 1800px) {
-  //   padding: 0px 150px;
-  // }
+  padding: 0;
+  @media screen and (min-width: 1100px) {
+    padding: 0px 80px;
+  }
+  @media screen and (min-width: 1600px) {
+    padding: 0px 160px;
+  }
+  @media screen and (min-width: 2100px) {
+    padding: 0px 210px;
+  }
+  @media screen and (min-width: 2600px) {
+    padding: 0px 260px;
+  }
   @media screen and (max-width: 970px) {
     flex-direction: column;
   }
@@ -47,8 +44,10 @@ const Content = styled.div`
 `;
 
 const VideoWrapper = styled.div`
-  margin: -22px;
-  margin-bottom: 20px;
+  @media screen and (max-width: 970px) {
+    margin: -22px;
+    margin-bottom: 20px;
+  }
 `;
 
 const Title = styled.h1`
