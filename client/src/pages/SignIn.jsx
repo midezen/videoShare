@@ -27,6 +27,9 @@ const H1 = styled.h1`
 const H2 = styled.h2`
   font-size: 17px;
   font-weight: 400;
+  @media screen and (max-width: 280px) {
+    font-size: 13px;
+  }
 `;
 
 const Input = styled.input`

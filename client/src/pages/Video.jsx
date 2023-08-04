@@ -6,7 +6,10 @@ import SortIcon from "@mui/icons-material/Sort";
 import AddComment from "../components/AddComment";
 import Comments from "../components/Comments";
 import Card from "../components/Card";
+import UnfoldMoreIcon from "@mui/icons-material/UnfoldMore";
 import { devices } from "../utils/devices";
+import { SwipeableDrawer } from "@mui/material";
+import { useState } from "react";
 
 const Container = styled.div`
   display: flex;
@@ -15,24 +18,24 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 0px 500px;
+  // padding: 0px 500px;
   display: flex;
   gap: 24px;
-  @media screen and (max-width: 2420px) {
-    padding: 0px 300px;
-  }
-  @media screen and (max-width: 1800px) {
-    padding: 0px 150px;
-  }
-  @media ${devices.laptopL} {
-    padding: 0px 80px;
-  }
-  @media ${devices.laptop} {
-    margin: 0 -140px;
-  }
-  @media screen and (max-width: 1800px) {
-    padding: 0px 150px;
-  }
+  // @media screen and (max-width: 2420px) {
+  //   padding: 0px 300px;
+  // }
+  // @media screen and (max-width: 1800px) {
+  //   padding: 0px 150px;
+  // }
+  // @media ${devices.laptopL} {
+  //   padding: 0px 80px;
+  // }
+  // @media ${devices.laptop} {
+  //   margin: 0 -140px;
+  // }
+  // @media screen and (max-width: 1800px) {
+  //   padding: 0px 150px;
+  // }
   @media screen and (max-width: 970px) {
     flex-direction: column;
   }
@@ -43,7 +46,10 @@ const Content = styled.div`
   width: 100%;
 `;
 
-const VideoWrapper = styled.div``;
+const VideoWrapper = styled.div`
+  margin: -22px;
+  margin-bottom: 20px;
+`;
 
 const Title = styled.h1`
   font-size: 18px;
@@ -51,12 +57,20 @@ const Title = styled.h1`
   margin-top: 15px;
   margin-bottom: 8px;
   color: ${({ theme }) => theme.text};
+  @media screen and (max-width: 490px) {
+    font-size: 16px;
+  }
 `;
 
 const ChannelDetailsTop = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  @media screen and (max-width: 462px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
 `;
 
 const Channel = styled.div`
@@ -84,17 +98,28 @@ const ChannelName = styled.h2`
   font-size: 16px;
   font-weight: 400;
   color: ${({ theme }) => theme.text};
+  @media screen and (max-width: 490px) {
+    font-size: 14px;
+  }
 `;
 
 const Subscribers = styled.span`
   font-size: 13px;
   color: ${({ theme }) => theme.textSoft};
+  @media screen and (max-width: 490px) {
+    font-size: 11px;
+  }
 `;
 
 const Buttons = styled.div`
   display: flex;
   gap: 20px;
   color: ${({ theme }) => theme.text};
+  @media screen and (max-width: 462px) {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
 `;
 
 const Button = styled.button`
@@ -108,6 +133,9 @@ const Button = styled.button`
   gap: 2px;
   border: none;
   cursor: pointer;
+  @media screen and (max-width: 490px) {
+    padding: 7px 10px;
+  }
 `;
 
 const ChannelDetailsBottom = styled.div`
@@ -165,8 +193,28 @@ const Recommendation = styled.div`
   width: 100%;
 `;
 
+const DisplayComments = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0px;
+  margin-top: 15px;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.bgLighter};
+`;
+
+const Drawer = styled.div`
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.bg};
+`;
+
 const Video = () => {
   const screenWidth = window.innerWidth;
+  const [showComments, setShowComments] = useState(false);
+  const handleShowComments = () => {
+    setShowComments(!showComments);
+  };
 
   return (
     <Container>
@@ -230,7 +278,31 @@ const Video = () => {
             </CommentSort>
           </ArrangeComments>
           <AddComment />
-          <Comments />
+          {screenWidth <= 460 ? (
+            <DisplayComments
+              onClick={handleShowComments}
+              style={{ fontSize: "14px" }}
+            >
+              Comments <UnfoldMoreIcon />
+            </DisplayComments>
+          ) : (
+            <Comments />
+          )}
+          <Drawer>
+            <SwipeableDrawer
+              anchor="bottom"
+              open={showComments}
+              onClose={() => setShowComments(false)}
+              onOpen={() => setShowComments(true)}
+              PaperProps={{
+                style: {
+                  height: "60%",
+                },
+              }}
+            >
+              <Comments drawer="drawer" />
+            </SwipeableDrawer>
+          </Drawer>
         </Content>
         <Recommendation>
           <Card type="sm" />

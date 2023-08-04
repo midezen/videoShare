@@ -22,6 +22,7 @@ const Container = styled.div`
 const Main = styled.div`
   flex: ${(props) => (props.toggle ? "15" : "5")};
   background-color: ${({ theme }) => theme.bg};
+  min-width: 280px;
 
   @media ${devices.laptop} {
     flex: 10;

@@ -19,7 +19,6 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.bgLighter};
   color: ${({ theme }) => theme.text};
   z-index: 999;
-  // width: 100vw;
 `;
 
 const Wrapper = styled.div`
@@ -178,7 +177,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   };
 
   return (
-    <Container>
+    <Container
+    // style={{
+    //   minWidth: `${location.pathname.split("/")[1] !== "" && "427px"}`,
+    // }}
+    >
       <Drawer>
         <SwipeableDrawer
           anchor="left"

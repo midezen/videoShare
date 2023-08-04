@@ -7,6 +7,10 @@ const Container = styled.div`
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
   gap: ${(props) => props.type === "sm" && "10px"};
+  @media screen and (max-width: 280px) {
+    flex-direction: ${(props) => props.type === "sm" && "column"};
+    margin-bottom: ${(props) => (props.type === "sm" ? "20px" : "45px")};
+  }
 `;
 
 const Image = styled.img`
@@ -51,6 +55,9 @@ const Title = styled.h1`
   width: ${(props) => (props.type === "sm" ? "100%" : "80%")};
   @media screen and (max-width: 1306px) {
     font-size: ${(props) => (props.type === "sm" ? "13px" : "16px")};
+  }
+  @media screen and (max-width: 280px) {
+    margin-bottom: ${(props) => (props.type === "sm" ? "5px" : "none")};
   }
 `;
 
