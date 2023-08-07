@@ -124,7 +124,7 @@ const Menu2 = () => {
           </IconButton>
 
           <Link to="/" style={{ textDecoration: "none" }}>
-            <Logo>
+            <Logo onClick={() => setDrawerToggle(false)}>
               <Img src={logo} />
               MideTube
             </Logo>
@@ -137,20 +137,20 @@ const Menu2 = () => {
           </Item>
         </Link>
 
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <ExploreOutlinedIcon />
           Explore
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <SubscriptionOutlinedIcon />
           Subscriptions
         </Item>
         <Hr />
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <VideoLibraryOutlinedIcon />
           Library
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <HistoryOutlinedIcon />
           History
         </Item>
@@ -158,7 +158,7 @@ const Menu2 = () => {
         <Login>
           <LoginText>Sign in to like Videos, Comment and Subscribe.</LoginText>
           <Link to="auth" style={{ textDecoration: "none" }}>
-            <Button>
+            <Button onClick={() => setDrawerToggle(false)}>
               <AccountCircleOutlinedIcon />
               <ButtonText>SIGN IN</ButtonText>
             </Button>
@@ -166,40 +166,40 @@ const Menu2 = () => {
         </Login>
         <Hr />
         <Title>BEST OF MIDETUBE</Title>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <LibraryMusicOutlinedIcon />
           Music
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <SportsBasketBallOutlinedIcon />
           Sports
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <SportsESportsOutlinedIcon />
           Gaming
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <MovieOutlinedIcon />
           Movies
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <ArticleOutlinedIcon />
           News
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <LiveOutlinedIcon />
           Live
         </Item>
         <Hr />
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <SettingsOutlinedIcon />
           Settings
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <FlagOutlinedIcon />
           Report
         </Item>
-        <Item>
+        <Item onClick={() => setDrawerToggle(false)}>
           <HelpOutlineOutlinedIcon />
           Help
         </Item>

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { devices } from "../utils/devices";
 
 const Container = styled.div`
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
   display: ${(props) => props.type === "sm" && "flex"};
   gap: ${(props) => props.type === "sm" && "10px"};
-  @media screen and (max-width: 280px) {
+  @media screen and (max-width: 380px) {
     flex-direction: ${(props) => props.type === "sm" && "column"};
     margin-bottom: ${(props) => (props.type === "sm" ? "20px" : "45px")};
   }
@@ -56,7 +55,7 @@ const Title = styled.h1`
   @media screen and (max-width: 1306px) {
     font-size: ${(props) => (props.type === "sm" ? "13px" : "16px")};
   }
-  @media screen and (max-width: 280px) {
+  @media screen and (max-width: 380px) {
     margin-bottom: ${(props) => (props.type === "sm" ? "5px" : "none")};
   }
 `;
